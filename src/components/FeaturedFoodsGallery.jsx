@@ -15,36 +15,39 @@ const featuredDishes = [
 
 const FeaturedFoodsGallery = () => {
   return (
-    <div className="py-16 bg-yellow-50 w-[1200px]">
-      {/* Section Header */}
+    <div className="py-16 bg-yellow-50 w-full px-4 md:px-8 lg:px-16">
+      {/* Section Header with gradient + animation */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-orange-600">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-orange-700 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-pulse">
           Our Delicious Menu 🍽️
         </h1>
         <p className="text-gray-700 max-w-2xl mx-auto text-base md:text-lg px-2">
-          Explore our wide range of mouth-watering dishes crafted with love 
-          and fresh ingredients. Something special for everyone!
+          Explore our wide range of mouth-watering dishes crafted with love and fresh ingredients. Something special for everyone!
         </p>
       </div>
 
       {/* Gallery Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {featuredDishes.map((dish, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300"
+            className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 hover:shadow-2xl transition-transform duration-300 relative group"
           >
-            <div className="relative w-full h-60 sm:h-72 md:h-80">
+            {/* Image */}
+            <div className="relative w-full h-48 sm:h-48 md:h-52">
               <Image
                 src={dish.image}
                 alt={dish.name}
                 fill
                 style={{ objectFit: "cover" }}
+                className="group-hover:scale-110 transition-transform duration-500"
               />
             </div>
-            {/* <p className="text-center text-base md:text-lg font-semibold p-3 text-gray-800">
-              {dish.name}
-            </p> */}
+
+            {/* Name Overlay on hover */}
+            <div className="absolute bottom-0 w-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-3 text-center">
+              <p className="text-white font-semibold text-lg">{dish.name}</p>
+            </div>
           </div>
         ))}
       </div>

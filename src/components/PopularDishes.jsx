@@ -8,28 +8,28 @@ const dishes = [
     id: 1,
     name: "Grilled Chicken",
     price: "$12.99",
-    image: "/Images/GrilledChicken.png",
+    image: "/Images/Grilled-Chicken.png",
     desc: "Juicy grilled chicken with herbs and spices, served hot.",
   },
   {
     id: 2,
     name: "Beef Burger",
     price: "$9.99",
-    image: "/Images/Beef Burger.png",
+    image: "/Images/Beef-Burger.png",
     desc: "Classic beef burger with cheese, lettuce, and our special sauce.",
   },
   {
     id: 3,
     name: "Italian Pizza",
     price: "$14.50",
-    image: "/Images/ItalianPizza.png",
+    image: "/Images/Italian-Pizza.png",
     desc: "Freshly baked Italian pizza topped with mozzarella and basil.",
   },
   {
     id: 4,
     name: "Pasta Alfredo",
     price: "$11.75",
-    image: "/Images/PastaAlfredo.png",
+    image: "/Images/Pasta-Alfredo.png",
     desc: "Creamy Alfredo pasta with parmesan and garlic, a classic delight.",
   },
 ];
@@ -84,12 +84,12 @@ const PopularDishes = () => {
             "
           >
             {/* Image */}
-            <div className="relative h-60 xl:h-72 overflow-hidden">
+            <div className="relative h-52 xl:h-52 overflow-hidden">
               <Image
                 src={dish.image}
                 alt={dish.name}
                 fill
-                className="object-cover group-hover:scale-110 transition duration-500"
+                className="object-cover p-4 group-hover:scale-110 transition duration-500"
               />
             </div>
 
@@ -111,7 +111,7 @@ const PopularDishes = () => {
               <button
                 className="
                   btn w-full mt-5
-                  bg-orange-600 hover:bg-orange-700
+                  bg-orange-500 hover:bg-orange-600
                   text-white border-none
                   px-6
                 "

@@ -55,7 +55,7 @@ const FeatureSection = () => {
               Experience the rich flavors and fresh ingredients our chefs craft
               specially for you. A perfect blend of taste and presentation.
             </p>
-            <button className="btn bg-orange-500 hover:bg-orange-600 text-white px-6 py-3">
+            <button className="btn bg-orange-500 hover:bg-orange-600 text-white py-3 px-20">
               Order Now
             </button>
           </motion.div>

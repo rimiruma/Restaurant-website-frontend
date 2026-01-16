@@ -7,6 +7,7 @@ import Banner from "@/components/Home/Banner";
 import PopularDishes from "@/components/PopularDishes";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Image from "next/image";
+import GetFeaturedMenu from "@/components/GetFeaturedMenu";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Banner></Banner>
       <PopularDishes></PopularDishes>
       {/* <ChefSpecials></ChefSpecials> */}
+      <GetFeaturedMenu></GetFeaturedMenu>
       <FeatureSection></FeatureSection>
       <FeaturedFoods></FeaturedFoods>
       <FeaturedFoodsGallery></FeaturedFoodsGallery>
