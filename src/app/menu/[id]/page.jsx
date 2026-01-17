@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
+import { FaStar } from "react-icons/fa";
 
 export default function MenuDetailsPage() {
   const { id } = useParams();
@@ -15,11 +16,12 @@ export default function MenuDetailsPage() {
     const fetchItem = async () => {
       try {
         const res = await fetch(`/api/menu/${id}`);
+        const data = await res.json();
+
         if (!res.ok) {
-          const data = await res.json();
           throw new Error(data.message || "Something went wrong");
         }
-        const data = await res.json();
+
         setItem(data);
       } catch (err) {
         setError(err.message);
@@ -28,45 +30,70 @@ export default function MenuDetailsPage() {
       }
     };
 
-    fetchItem();
+    if (id) fetchItem();
   }, [id]);
-console.log(item);
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+
+  if (loading) return <p className="text-center mt-20">Loading...</p>;
   if (error)
-    return (
-      <div className="text-center mt-10">
-        <p className="text-xl font-semibold">{error}</p>
-        <button
-          onClick={() => router.push("/menu")}
-          className="mt-4 bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors duration-300"
-        >
-          Back to Menu
-        </button>
-      </div>
-    );
+    return <p className="text-center mt-20 text-red-500">{error}</p>;
+
+  if (!item) return null; // ✅ prevents "item is not defined"
 
   return (
-    <section className="max-w-5xl mx-auto py-16 px-4 md:px-8">
-      <div className="w-full h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
-        <Image
-          src={item.image}
-          alt={item.name}
-          fill
-          style={{ objectFit: "cover" }}
-          className="rounded-lg"
-        />
+    <section className="max-w-6xl mx-auto py-16 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        {/* Image */}
+        <div className="relative w-full h-[420px] rounded-xl overflow-hidden shadow-lg">
+          <Image
+            src={item.image}
+            alt={item.name}
+            fill
+            className="object-cover"
+          />
+        </div>
+        {/* Content */}
+        <div>
+          <h1 className="text-4xl font-extrabold text-orange-500 mb-3">
+            {item.name}
+          </h1>
+
+          {/* Reviews */}
+          <div className="flex items-center gap-2 mb-5">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <FaStar key={star} className="text-yellow-400" />
+            ))}
+            <span className="text-sm text-gray-500">(120 reviews)</span>
+          </div>
+
+          <p className="text-gray-600 text-lg mb-6">
+            {item.description}
+          </p>
+
+          <p className="text-3xl font-bold text-orange-500 mb-8">
+            ${item.price}
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-wrap gap-4">
+            {/* Add to Cart */}
+            <button
+              className="bg-orange-500 text-white px-8 py-6 rounded-full text-lg font-semibold btn shadow-lg hover:bg-orange-600 hover:scale-105 transition-all duration-300"
+            >
+              🛒 Add to Cart
+            </button>
+
+            {/* Back to Menu */}
+            <button
+              onClick={() => router.push("/menu")}
+              className="border border-gray-300 btn px-8 py-6 rounded-full text-lg hover:bg-gray-100 transition"
+            >
+              Back to Menu
+            </button>
+          </div>
+
+        </div>
       </div>
-
-      <h1 className="text-4xl md:text-5xl font-bold mb-4">{item.name}</h1>
-      <p className="text-gray-700 mb-6">{item.description}</p>
-      <p className="text-2xl font-semibold text-orange-500 mb-8">${item.price}</p>
-
-      <button
-        onClick={() => router.push("/menu")}
-        className="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-orange-600 transition-colors duration-300"
-      >
-        Back to Menu
-      </button>
     </section>
   );
 }
