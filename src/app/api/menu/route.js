@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { dbConnect, collections } from "@/lib/dbConnect";
+import { ObjectId } from "mongodb";
 
 export async function GET(req) {
   try {
     // 1️⃣ Connect to Menu collection
     const menuCollection = await dbConnect(collections.MenuItems);
-
+console.log(req.query);
     // 2️⃣ Read limit query parameter (optional)
     const { searchParams } = new URL(req.url);
     const limitParam = searchParams.get("limit");
@@ -30,10 +31,13 @@ export async function GET(req) {
   }
 }
 
+
+
 export async function POST(req) {
   try {
     // 1️⃣ Get JSON body from request
     const body = await req.json();
+    console.log(req);
 
     // 2️⃣ Basic validation
     if (!body.name || !body.price || !body.category) {
