@@ -9,21 +9,21 @@ import { motion } from "framer-motion";
 
 // Image listlist
 const images = [
-  "/Images/cheese-burger-2.png",
-  "/Images/grilled-chicken.png",
-  "/Images/beef-burger.png",
-  "/Images/Italian-Pizza.png",
-  "/Images/Chocolate-Dessert.png",
-  "/Images/French-Fries.png",
-  "/Images/Fresh-Salad-Bow-l.png",
-  "/Images/Italian Pizza1.png",
+  "https://res.cloudinary.com/djurp0vai/image/upload/v1768587797/Chocolate_Cake_gblkzk.jpg",
+  "https://res.cloudinary.com/djurp0vai/image/upload/v1768586898/Margherita_Pizza10_hrzow3.jpg",
+  "https://res.cloudinary.com/djurp0vai/image/upload/v1768586700/Chocolate_Brownie3_z20w6v.jpg",
+  "https://res.cloudinary.com/djurp0vai/image/upload/v1768586601/Chicken_Caesar_Salad12_gslsiq.jpg",
+  "https://res.cloudinary.com/djurp0vai/image/upload/v1768586700/Chocolate_Brownie3_z20w6v.jpg",
+  "https://res.cloudinary.com/djurp0vai/image/upload/v1768589071/Beverage_q0pu5t.jpg",
+  "https://res.cloudinary.com/djurp0vai/image/upload/v1768588953/Lemonade_hxzfnn.jpg",
+  "https://res.cloudinary.com/djurp0vai/image/upload/v1768588148/Strawberry_Milkshake_aakjrk.jpg",
 ];
 
 const settings = {
   dots: true,
   infinite: true,
   speed: 600,
-  slidesToShow: 4,
+  slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 3000,
@@ -32,14 +32,14 @@ const settings = {
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
       },
     },
     {
       breakpoint: 768,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1,
       },
     },
@@ -94,13 +94,6 @@ const FeaturedFoods = () => {
           ))}
         </Slider>
       </div>
-
-      {/* 🔹 Slick dots mobile fix */}
-      {/* <style jsx global>{`
-        .slick-dots {
-          bottom: -35px;
-        }
-      `}</style> */}
     </div>
   );
 };

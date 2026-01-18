@@ -65,7 +65,7 @@ const FeatureSection = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex-1 lg:relative w-full lg:h-[28rem]"
+            className="flex-1 relative w-full h-80 sm:h-96 lg:h-[28rem]"
           >
             <Image
               src={bannerImage}

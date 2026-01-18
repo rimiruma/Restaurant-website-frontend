@@ -3,16 +3,17 @@
 import Image from "next/image";
 
 const featuredDishes = [
-  { name: "Cheese Burger", image: "/Images/cheese-burger-2.png" },
-  { name: "Italian Pizza", image: "/Images/Italian-Pizza.png" },
-  { name: "Grilled Chicken", image: "/Images/grilled-chicken.png" },
-  { name: "Chicken Sandwich", image: "/Images/chicken-sandwich.png" },
-  { name: "French Fries", image: "/Images/french-fries.png" },
-  { name: "Fresh Salad Bowl", image: "/Images/Fresh-Salad-Bow-l.png" },
-  { name: "Pasta Alfredo", image: "/Images/Pasta-Alfredo.png" },
-  { name: "Chocolate Cake", image: "/Images/Chocolate-Dessert.png" },
+  { name: "Cheese Burger", image: "https://res.cloudinary.com/djurp0vai/image/upload/v1768586898/Margherita_Pizza10_hrzow3.jpg" },
+  { name: "Italian Pizza", image: "https://res.cloudinary.com/djurp0vai/image/upload/v1768586962/Margherita_Pizza9_elpyau.jpg" },
+  { name: "Grilled Chicken", image: "https://res.cloudinary.com/djurp0vai/image/upload/v1768588006/Vanilla_Ice_Cream_y3exnb.jpg" },
+  { name: "Chicken Sandwich", image: "https://res.cloudinary.com/djurp0vai/image/upload/v1768587797/Chocolate_Cake_gblkzk.jpg" },
+  { name: "French Fries", image: "https://res.cloudinary.com/djurp0vai/image/upload/v1768588148/Strawberry_Milkshake_aakjrk.jpg" },
+  { name: "Fresh Salad Bowl", image: "https://res.cloudinary.com/djurp0vai/image/upload/v1768589071/Beverage_q0pu5t.jpg" },
+  { name: "Pasta Alfredo", image: "https://res.cloudinary.com/djurp0vai/image/upload/v1768588953/Lemonade_hxzfnn.jpg" },
+  { name: "Chocolate Cake", image: "https://res.cloudinary.com/djurp0vai/image/upload/v1768588802/Pasta_Primavera6_izv0yf.jpg" },
 ];
-
+const hello = featuredDishes.map(dish => dish.name);
+console.log(hello);
 const FeaturedFoodsGallery = () => {
   return (
     <div className="py-16 bg-yellow-50 w-full px-4 sm:px-6 lg:px-16">
@@ -38,7 +39,7 @@ const FeaturedFoodsGallery = () => {
         grid gap-4
         grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
       ">
-        {featuredDishes.map((dish, index) => (
+        {featuredDishes?.map((dish, index) => (
           <div
             key={index}
             className="
@@ -51,8 +52,8 @@ const FeaturedFoodsGallery = () => {
             {/* Image */}
             <div className="relative w-full h-40 sm:h-44 md:h-48 lg:h-52">
               <Image
-                src={dish.image}
-                alt={dish.name}
+                src={dish?.image}
+                alt={dish?.name}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -67,7 +68,7 @@ const FeaturedFoodsGallery = () => {
               p-3 text-center
             ">
               <p className="text-white font-semibold text-base md:text-lg">
-                {dish.name}
+                {dish?.name}
               </p>
             </div>
           </div>

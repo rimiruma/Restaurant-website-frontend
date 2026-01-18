@@ -1,21 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  // images: {
-  //   remotePatterns: [new URL('https://i.pinimg.com/**')],
-  // },
-     images: {
+  images: {
     remotePatterns: [
+      // Cloudinary
       {
-        protocol: 'https',
-        hostname: '*',
-        port: '',
-        pathname: '/**',
-        search: '',
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+      // ImgBB
+      {
+        protocol: "https",
+        hostname: "i.ibb.co",
+        pathname: "/**",
       },
     ],
-  }
- 
+  },
 };
 
 export default nextConfig;
