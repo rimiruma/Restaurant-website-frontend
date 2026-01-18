@@ -1,34 +1,51 @@
 "use client";
 
+import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FcGoogle } from "react-icons/fc"; // Just in case they have react-icons, package.json said they do: "react-icons": "^5.5.0"
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@example.com");
+  const [password, setPassword] = useState("123456");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
-    if (!email || !password) {
-      setError("Please enter email and password");
-      return;
-    }
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-    if (email === "admin@example.com" && password === "123456") {
-      router.push("/dashboard");
-    } else {
-      setError("Invalid credentials");
+      if (result?.error) {
+        setError("Invalid credentials");
+        setLoading(false);
+      } else {
+        router.push("/menu");
+        router.refresh();
+      }
+    } catch (err) {
+      setError("An error occurred");
+      setLoading(false);
     }
+  };
+
+  const handleGoogleLogin = () => {
+    signIn("google", { callbackUrl: "/menu" });
   };
 
   return (
     <section
       className="min-h-screen flex items-center justify-center px-4"
       style={{
-        backgroundImage: "url('/Images/banner.png')", // আগের image
+        backgroundImage: "url('/Images/banner.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -75,11 +92,31 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full bg-orange-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-orange-600 transition"
+            disabled={loading}
+            className="w-full bg-orange-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-orange-600 transition disabled:opacity-70"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
+
+        <div className="mt-4">
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-transparent text-gray-600">Or continue with</span>
+            </div>
+          </div>
+
+          <button
+            onClick={handleGoogleLogin}
+            className="mt-4 w-full bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold py-2 px-4 rounded-lg flex items-center justify-center transition"
+          >
+            <FcGoogle className="w-5 h-5 mr-2" />
+            Sign in with Google
+          </button>
+        </div>
 
         <p className="text-center text-gray-600 mt-6">
           Don't have an account?{" "}

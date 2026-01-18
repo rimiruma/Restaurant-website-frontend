@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/Images/logo (2).png";
+import { auth, signOut } from "@/auth";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await auth();
+
   return (
     <>
       {/* 🍔 Fixed Navbar */}
@@ -44,10 +47,26 @@ const Navbar = () => {
             >
               <li><Link href="/">Home</Link></li>
               <li><Link href="/menu">AllMenu</Link></li>
-              <li><Link href="/add-food">AddFood</Link></li>
+              {session && (
+                <>
+                  <li><Link href="/addMenu">AddMenu</Link></li>
+                  <li><Link href="/manage-items">Manage Items</Link></li>
+                </>
+              )}
               <li><Link href="/aboutUs">AboutUs</Link></li>
               <li><Link href="/ContactUs">ContactUs</Link></li>
-              <li><Link href="/login">Login</Link></li>
+              {!session ? (
+                <li><Link href="/login">Login</Link></li>
+              ) : (
+                <li>
+                  <form action={async () => {
+                    "use server"
+                    await signOut()
+                  }}>
+                    <button type="submit">Logout</button>
+                  </form>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -72,21 +91,41 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 font-medium text-gray-700">
             <li><Link className="hover:text-orange-500" href="/">Home</Link></li>
             <li><Link className="hover:text-orange-500" href="/menu">AllMenu</Link></li>
-           <li><Link className="hover:text-orange-500" href="/aboutUs">AboutUs</Link></li>
+            <li><Link className="hover:text-orange-500" href="/aboutUs">AboutUs</Link></li>
             <li><Link className="hover:text-orange-500" href="/ContactUs">ContactUs</Link></li>
-            <li><Link className="hover:text-orange-500" href="/addMenu">AddMenu</Link></li>
-            
+            {session && (
+              <>
+                <li><Link className="hover:text-orange-500" href="/addMenu">AddMenu</Link></li>
+                <li><Link className="hover:text-orange-500" href="/manage-items">Manage Items</Link></li>
+              </>
+            )}
           </ul>
         </div>
 
         {/* Navbar End */}
         <div className="navbar-end">
-          <Link
-            href="/login"
-            className="btn btn-sm bg-orange-500 hover:bg-orange-600 text-white border-none"
-          >
-            Login
-          </Link>
+          {!session ? (
+            <Link
+              href="/login"
+              className="btn btn-sm bg-orange-500 hover:bg-orange-600 text-white border-none"
+            >
+              Login
+            </Link>
+          ) : (
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold text-orange-600 hidden md:block">
+                {session.user?.name || "User"}
+              </span>
+              <form action={async () => {
+                "use server"
+                await signOut()
+              }}>
+                <button type="submit" className="btn btn-sm bg-red-500 hover:bg-red-600 text-white border-none">
+                  Logout
+                </button>
+              </form>
+            </div>
+          )}
         </div>
       </div>
 
