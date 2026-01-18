@@ -1,16 +1,17 @@
-
-
 "use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import bannerImg from "../../../public/Images/banner.png"; // তোমার banner image
+import bannerImg from "../../../public/Images/banner.png";
 
 const Banner = () => {
   return (
-    <section className="relative h-[90vh] w-full overflow-hidden">
-      
+    <section className="
+      relative w-full overflow-hidden
+      h-[70vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh]
+    ">
+
       {/* 🖼️ Background Image */}
       <motion.div
         initial={{ scale: 1.1 }}
@@ -31,7 +32,11 @@ const Banner = () => {
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* 🍔 Content */}
-      <div className="relative z-10 flex h-full items-center justify-center px-4">
+      <div className="
+        relative z-10 h-full
+        flex items-center justify-center
+        px-4 sm:px-6 lg:px-8
+      ">
         <div className="max-w-3xl text-center text-white">
 
           {/* Title */}
@@ -39,7 +44,10 @@ const Banner = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-4xl md:text-6xl font-extrabold leading-tight"
+            className="
+              font-extrabold leading-tight
+              text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+            "
           >
             Delicious Food <br />
             <span className="text-orange-400">Made With Love</span>
@@ -50,7 +58,11 @@ const Banner = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="mt-5 text-base md:text-lg text-gray-200"
+            className="
+              mt-4 sm:mt-5
+              text-sm sm:text-base md:text-lg
+              text-gray-200
+            "
           >
             Experience the taste of fresh ingredients, authentic recipes,
             and unforgettable flavors at TasteBite.
@@ -61,7 +73,12 @@ const Banner = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
+            className="
+              mt-6 sm:mt-8
+              flex flex-col sm:flex-row
+              gap-3 sm:gap-4
+              justify-center
+            "
           >
             <Link
               href="/menu"
@@ -77,6 +94,7 @@ const Banner = () => {
               Book a Table
             </Link>
           </motion.div>
+
         </div>
       </div>
     </section>

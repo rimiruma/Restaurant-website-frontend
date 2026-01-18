@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import bannerImage from "../../public/Images/Chicken Pasta1.png"; // আপনার ইমেজ path
+import bannerImage from "../../public/Images/Chicken Pasta1.png";
 
 const FeatureSection = () => {
   return (
@@ -18,7 +18,7 @@ const FeatureSection = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
 
-        {/* 🔹 Section Header (H1 + Paragraph) */}
+        {/* 🔹 Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,14 +30,14 @@ const FeatureSection = () => {
             Taste the Difference
           </h1>
           <p className="text-gray-600 mt-4 text-lg">
-            Explore our chef’s handpicked signature dishes, crafted with
+            Explore our chef's handpicked signature dishes, crafted with
             fresh ingredients and authentic flavors to delight your senses.
           </p>
         </motion.div>
 
-        {/* 🔹 Main Content: Left Text + Right Image */}
+        {/* 🔹 Main Content */}
         <div className="flex flex-col lg:flex-row items-center gap-10">
-          
+
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -46,7 +46,7 @@ const FeatureSection = () => {
             className="flex-1"
           >
             <p className="text-orange-500 font-semibold uppercase tracking-wide mb-2">
-              Chef’s Recommendation
+              Chef's Recommendation
             </p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
               Try Our Signature Dish Today
@@ -55,7 +55,7 @@ const FeatureSection = () => {
               Experience the rich flavors and fresh ingredients our chefs craft
               specially for you. A perfect blend of taste and presentation.
             </p>
-            <button className="btn bg-orange-500 hover:bg-orange-600 text-white py-3 px-20">
+            <button className="btn bg-orange-500 hover:bg-orange-600 text-white py-3 px-10 sm:px-14 lg:px-20">
               Order Now
             </button>
           </motion.div>
@@ -65,7 +65,7 @@ const FeatureSection = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex-1 relative w-full h-80 sm:h-96 lg:h-112"
+            className="flex-1 lg:relative w-full lg:h-[28rem]"
           >
             <Image
               src={bannerImage}

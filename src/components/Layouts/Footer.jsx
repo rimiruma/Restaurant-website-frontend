@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../../public/Images/logo (2).png";
+import logo from "../../../public/Images/logo.png";
 
 import React from "react";
 import {
@@ -24,21 +24,21 @@ const Footer = () => {
         {/* Logo & About */}
         <div>
           <Link href="/" className="flex items-center gap-3 ml-2">
-                      <div className="relative w-11 h-11 rounded-full ring-2 ring-orange-400 overflow-hidden hover:scale-105 transition">
-                        <Image
-                          src={logo}
-                          alt="TasteBite Logo"
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <h1 className="text-xl font-extrabold text-orange-600">
-                        TasteBite
-                      </h1>
-                    </Link>
+            <div className="relative w-11 h-11 rounded-full ring-2 ring-orange-400 overflow-hidden hover:scale-105 transition">
+              <Image
+                src={logo}
+                alt="TasteBite Logo"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <h1 className="text-xl font-extrabold text-orange-600">
+              TasteBite
+            </h1>
+          </Link>
           <p className="text-sm leading-relaxed">
             Delicious food, cozy atmosphere and friendly service.
-            Enjoy our chef’s special dishes made with love.
+            Enjoy our chef's special dishes made with love.
           </p>
 
           {/* Social Icons */}

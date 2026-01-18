@@ -4,9 +4,17 @@ const nextConfig = {
   // images: {
   //   remotePatterns: [new URL('https://i.pinimg.com/**')],
   // },
-   images: {
-    domains: ["res.cloudinary.com"],
-  },
+     images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*',
+        port: '',
+        pathname: '/**',
+        search: '',
+      },
+    ],
+  }
  
 };
 

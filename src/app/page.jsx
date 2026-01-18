@@ -10,7 +10,7 @@ import SpecialOfferSection from "@/components/SpecialOfferSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center">
+    <div className="flex flex-col min-h-screen">
       <Banner></Banner>
       <PopularDishes></PopularDishes>
       <SpecialOfferSection></SpecialOfferSection>

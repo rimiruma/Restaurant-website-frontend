@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const SpecialOfferSection = () => {
   return (
     <div className="w-full bg-gradient-to-r from-orange-50 via-yellow-50 to-yellow-100 py-16">
-      
+
       {/* Section Header */}
       <div className="text-center mb-12 px-4">
         <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-pulse">
@@ -19,7 +19,7 @@ const SpecialOfferSection = () => {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 px-4 md:px-0">
-        
+
         {/* Left Side - Image */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -28,7 +28,7 @@ const SpecialOfferSection = () => {
           className="md:w-1/2 w-full relative h-80 sm:h-96 md:h-96 rounded-xl overflow-hidden shadow-xl"
         >
           <Image
-            src="/Images/Chocolate-Dessert.png" // এখানে ইমেজ চেঞ্জ করতে পারো
+            src="/Images/Chocolate-Dessert.png"
             alt="Special Dish"
             fill
             style={{ objectFit: "cover" }}
